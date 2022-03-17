@@ -8,6 +8,6 @@ module.exports.loop = function(){
 
         const source = creep.pos.findClosestByPath(FIND_SOURCES_ACTIVE);
      
-        
+        //test
     }
 }
