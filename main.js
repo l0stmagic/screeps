@@ -1,13 +1,36 @@
+const isWorking = require('role.Worker');
+
+const maxWorkers = 5;
+
+
 module.exports.loop = function(){
     for(const creppIndex in Game.creeps){
-        const creep =Game.creeps[creppIndex];
+        const creep =Game.creeps[creepIndex];
 
-        const source = creep.pos.findClosestByPath(FIND_SOURCES_ACTIVE);
-        console.log(creep.memory.isWorking);
-        isWorking(creep);
-        if(creep.memory.isWorking == true && creep.harvest(source) == ERR_NOT_IN_RANGE){ creep.moveTo(source); }
-        else if(creep.memory.isWorking == false && creep.transfer(Game.spawns["CORE"], RESOURCE_ENERGY) == ERR_NOT_IN_RANGE){creep.moveTo["CORE"]}
-     
-
+       
+        if(creep.memory.role == "worker"){worker.run(creep); }
     }
+for(const spawnIndex in Game.spawns){
+    const spawn = Game.spawns[spawnIndex];
+    const numOfWorkers = _.filter(Game.crees, (c) => c.memory.role == "worker" && c.memory.home == spawn.name);
+    
+    
+    
+    
+    if(numOfWorkers.length < maxWorkers){
+        var name;
+        for(i = 1; i < maxWorkers + 1; i++ ){
+            var found = false; 
+            for(const workerIndex in numOfWorkers){
+                const creep = numOfWorkers[workerIndex];
+                if(spawn.name.concat(":Worker").concat(i)== creep.name){ found = true; }
+            }
+            if(found == false){name= spawn.name.concat(":Worker").concat(i); break;}
+        }
+        const success = spawn.spawCreep([WORK, CARRY, MOVE], undefined, {memory: {role: "worker",isWorking: false, home: spawn.name}});
+    }
+
+
+}
+
 }
