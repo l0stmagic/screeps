@@ -1,10 +1,10 @@
-const isWorking = require('role.Worker');
+const worker = require('role.Worker');
 
 const maxWorkers = 5;
 
 
 module.exports.loop = function(){
-    for(const creppIndex in Game.creeps){
+    for(const creepIndex in Game.creeps){
         const creep =Game.creeps[creepIndex];
 
        
@@ -12,7 +12,7 @@ module.exports.loop = function(){
     }
 for(const spawnIndex in Game.spawns){
     const spawn = Game.spawns[spawnIndex];
-    const numOfWorkers = _.filter(Game.crees, (c) => c.memory.role == "worker" && c.memory.home == spawn.name);
+    const numOfWorkers = _.filter(Game.creeps, (c) => c.memory.role == "worker" && c.memory.home == spawn.name);
     
     
     
@@ -27,7 +27,7 @@ for(const spawnIndex in Game.spawns){
             }
             if(found == false){name= spawn.name.concat(":Worker").concat(i); break;}
         }
-        const success = spawn.spawCreep([WORK, CARRY, MOVE], undefined, {memory: {role: "worker",isWorking: false, home: spawn.name}});
+        const success = spawn.spawnCreep([WORK, CARRY, MOVE], name, {memory: {role: "worker",isWorking: false, home: spawn.name}});
     }
 
 

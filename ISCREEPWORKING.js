@@ -8,4 +8,4 @@ module.exports = {
             return creep.memory.isWorking = true;
         }
     }
-}
+};

@@ -16,7 +16,7 @@ module.exports = {
     run: function(creep) {
         isWorking.run(creep);
 
-        const energy creep.pos.findClosestByRange (FIND_MY_STRUCTURES, {filter: (s) => (s.structureType == STRUCTURE_SPAWN || s.structureType == STRUCTURE_EXTENTION) && s.energy < s.energyCapacity});
+        const energy = creep.pos.findClosestByRange (FIND_MY_STRUCTURES, {filter: (s) => (s.structureType == STRUCTURE_SPAWN || s.structureType == STRUCTURE_EXTENSION) && s.energy < s.energyCapacity});
 
 
         if(creep.memory.isWorking == false)
